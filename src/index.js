@@ -2,7 +2,7 @@ require("./models/user");
 const express = require("express");
 const mongoose = require("mongoose");
 const auth = require("./routes/auth");
-require("./models/user");
+const requireAuth = require("./middlewares/requireAuth");
 
 const app = express();
 app.use(express.json());
@@ -22,8 +22,8 @@ mongoose.connection.on("error", () => {
   console.log("Error connecting to database");
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello there!");
+app.get("/", requireAuth, (req, res) => {
+  res.send(`Your email is ${req.user.email}`);
 });
 
 app.listen(3000, () => {
