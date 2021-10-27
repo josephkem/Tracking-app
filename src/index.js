@@ -1,3 +1,4 @@
+require("./models/user");
 const express = require("express");
 const mongoose = require("mongoose");
 const auth = require("./routes/auth");
@@ -9,7 +10,7 @@ app.use(express.json());
 app.use(auth);
 
 const mongoUri =
-  "mongodb+srv://alex91:92631043@devcon.vu3ve.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://alex91:92631043@devcon.vu3ve.mongodb.net/Native?retryWrites=true&w=majority";
 
 mongoose.connect(mongoUri);
 
